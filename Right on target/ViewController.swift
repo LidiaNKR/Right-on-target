@@ -8,43 +8,41 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet var Slider: UISlider!
-    @IBOutlet var Label: UILabel!
     
-    var number: Int = 0
-    var round: Int = 1
-    var score: Int = 0
+    @IBOutlet var slider: UISlider!
+    @IBOutlet var label: UILabel!
+    
+    var game: Game!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewDidLoad ")
-        number = Int.random(in: 1...50)
-        Label.text = String(number)
-        round = 1
+        game = Game(startValue: 1, endValue: 50, rounds: 5)
+        updateLabelWithSecretNumber(newText: String(game.currentSecretValue))
+    }
+    
+    @IBAction func checkNumber() {
+        game.calculateScore(with: Int(slider.value))
+        if game.isGameEnded {
+            ShowAlertWith(score: game.score)
+            game.restartGame()
+        } else {
+            game.restartNewRound()
+        }
+        updateLabelWithSecretNumber(newText: String(game.currentSecretValue))
+    }
+    
+    private func updateLabelWithSecretNumber(newText: String) {
+        label.text = newText
+    }
+    
+    private func ShowAlertWith(score: Int) {
+        let alert = UIAlertController(title: "Игра окончена",
+                                      message: "Вы заработали \(score) очков",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Начать заново", style: .default))
+        present(alert, animated: true)
     }
 
-    @IBAction func checkNumber() {
-        let numSlider = Int(Slider.value.rounded())
-        if numSlider > number {
-            score += 50 - numSlider + number
-        } else if numSlider < number {
-            score += 50 - number + numSlider
-        } else {
-            score += 50
-        }
-        if round == 5 {
-            let alert = UIAlertController(title: "Игра окончена", message: "Вы заработали \(score) очков", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Начать заново", style: .default))
-            present(alert, animated: true)
-            round = 1
-            score = 0
-        } else {
-            round += 1
-        }
-        number = Int.random(in: 1...50)
-        Label.text = String(number)
-    }
     
 }
 

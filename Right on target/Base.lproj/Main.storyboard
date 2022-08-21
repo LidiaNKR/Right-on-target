@@ -34,7 +34,7 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="checkNumber" destination="BYZ-38-t0r" eventType="touchUpInside" id="SVp-wI-aXm"/>
+                                    <action selector="checkNumber" destination="BYZ-38-t0r" eventType="touchUpInside" id="d4g-oA-26M"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-EM-4n1">
@@ -56,9 +56,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yr4-R3-O0Z" secondAttribute="trailing" constant="20" id="y6h-Yi-Txr"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="zeQ-Ob-uAb"/>
                     <connections>
-                        <outlet property="Label" destination="Dv9-EM-4n1" id="GjB-Bk-5F0"/>
-                        <outlet property="Slider" destination="Yr4-R3-O0Z" id="iwd-iv-MhT"/>
+                        <outlet property="label" destination="Dv9-EM-4n1" id="U9l-kF-M9j"/>
+                        <outlet property="slider" destination="Yr4-R3-O0Z" id="WMh-vf-XIo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
